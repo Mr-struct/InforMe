@@ -8,6 +8,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Model model = new Model();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
