@@ -1,4 +1,4 @@
-package com.example.salon.touchedots;
+package com.example.dana.applic;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.salon.touchedots", appContext.getPackageName());
+        assertEquals("com.example.dana.applic", appContext.getPackageName());
     }
 }

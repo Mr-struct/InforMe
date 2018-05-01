@@ -1,4 +1,4 @@
-package com.example.salon.touchedots;
+package com.example.dana.applic;
 
 import org.junit.Test;
 
