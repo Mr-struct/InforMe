@@ -13,10 +13,10 @@ public class Form {
 
     /**
      *
-     * @param p1 Premier point scanné
-     * @param p2 second point scanné
-     * @param p3 troisième point scanné
-     * @param p4 quatrième point scanné
+     * @param p1 Premier point scanne
+     * @param p2 second point scanne
+     * @param p3 troisieme point scanne
+     * @param p4 quatrieme point scanne
      */
     public Form(Point p1, Point p2, Point p3, Point p4) {
         this.p1 = p1;
@@ -29,25 +29,38 @@ public class Form {
 
     /**
      *
-     * @return true si la forme est verticale avec deux points détécté sinon retourn faux  
+     * @return true si la forme est verticale avec deux points est detecte sinon retourn faux
+     * met a jour le type de la forme
      */
     public boolean isVerticalLines2Points() {
-        if ( abs(p1.x - p2.x ) < 70 && p1.y != p2.y) {
+        if ( abs(p1.x - p2.x ) < 70) {
             formType = "vertical_2";
             return true;
         }
         return false;
     }
 
+
+    /**
+     *
+     * @return true si la forme est horizantale avec deux points detecte sinon retourn faux
+     * met a jour le type de la forme
+     */
     public boolean isHorizantalLines2points() {
 
-        if ( abs(p1.y - p2.y ) < 70 && p1.x != p2.x) {
+        if ( abs(p1.y - p2.y ) < 70) {
             formType = "horizantal_2";
             return true;
         }
         return false;
     }
 
+
+    /**
+     *
+     * @return true si la forme est verticale avec trois points detecte sinon retourn faux
+     * met à jour le type de la forme
+     */
     public boolean isVerticalLines3Points() {
         if (abs(p1.x - p2.x) < 70 && abs(p2.x - p3.x) < 70 && abs(p1.x - p3.x) < 70 && p1.y != p2.y && p2.y != p3.y && p1.y != p3.y) {
             formType = "vertical_3";
@@ -56,6 +69,12 @@ public class Form {
         return false;
     }
 
+
+    /**
+     *
+     * @return true si la forme est une ligne horizantale avec deux trois detecte sinon retourn faux
+     * met a jour le type de la forme
+     */
     public boolean isHorizantalLines3points() {
 
         if (abs(p1.y - p2.y) < 70 && abs(p2.y - p3.y) < 70 && abs(p1.y - p3.y) < 70 && p1.x != p2.x && p2.x != p3.x && p1.x != p3.x) {
@@ -65,6 +84,14 @@ public class Form {
         return false;
     }
 
+
+    /**
+     *
+     * Methode interne pour le calcule des forme complexe rectangle et carre
+     * @param p1 Premier point scanne
+     * @param p2 second point scanne
+     * @return
+     */
     private boolean isVerticalLines2points(Point p1, Point p2) {
         if (abs(p1.x - p2.x ) < 70 && p1.y != p2.y ) {
 
@@ -73,6 +100,13 @@ public class Form {
         return false;
     }
 
+    /**
+     *
+     * Methode interne pour le calcule des forme complexe rectangle et carre
+     * @param p1 Premier point scanne
+     * @param p2 second point scanne
+     * @return
+     */
     private boolean isHorizantalLines2Points(Point p1, Point p2) {
 
         if (abs(p1.y - p2.y ) < 70 && p1.x != p2.x) {
@@ -81,6 +115,12 @@ public class Form {
         return false;
     }
 
+
+    /**
+     *
+     * @return true si la forme est un rectangle avec quatre points detecte sinon retourn faux
+     * met a jour le type de la forme
+     */
     public boolean isRectangle() {
 
         if ((isHorizantalLines2Points(p1, p2) && isHorizantalLines2Points(p3, p4) && isVerticalLines2points(p1, p3) && isVerticalLines2points(p2, p4) ) ||
@@ -95,6 +135,12 @@ public class Form {
         return false;
     }
 
+
+    /**
+     *
+     * @return true si la forme est un  carre avec deux points detecte sinon retourn faux
+     * met a jour le type de la forme
+     */
     public  boolean isSquare (){
         if(isRectangle() && dist()) {
             formType = "square";
@@ -103,6 +149,12 @@ public class Form {
         return false;
     }
 
+
+    /**
+     *
+     * @return true si la forme est verticale avec deux points détécté sinon retourn faux
+     * met a jour le type de la forme
+     */
     private boolean dist() {
         double dist1 = Math.sqrt((p2.y - p1.y)* (p2.y - p1.y) + (p2.x - p1.x)* (p2.x - p1.x));
         double dist2 = Math.sqrt((p3.y - p4.y)* (p3.y - p4.y) + (p3.x - p4.x)* (p3.x - p4.x));
@@ -111,6 +163,11 @@ public class Form {
         return (dist1 == dist2 && dist2 == dist3 && dist3 == dist1);
     }
 
+
+    /**
+     *
+     * @return le type de la forme
+     */
     public String getFormType() {
         return formType;
     }
